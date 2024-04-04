@@ -15,7 +15,11 @@ object HelloWorld {
 
     val mappingResult = Func.mapping(text)
 
-    mappingResult.take(5).foreach(println)
+//    mappingResult.take(mappingResult.length).foreach(println)
+
+    val reducResult = Func.reduce(mappingResult)
+    println(reducResult)
+
 
     val m1 = Map(("a" -> 1), ("b" -> 1))
     val m2 = Map(("a" -> 1), ("c" -> 2))
@@ -42,6 +46,13 @@ private object Func {
       (k, v1 + v2)
     }.toMap
     res
+  }
+
+  def reduce(arr: Array[(String, Int)]): Map[String, Int] = {
+    arr.foldLeft(Map.empty[String, Int]) { (acc, word) =>
+      val (wordString, _) = word
+      acc + (wordString -> (acc.getOrElse(wordString, 0) + 1))
+    }
   }
 
 }
