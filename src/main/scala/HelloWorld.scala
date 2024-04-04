@@ -13,23 +13,25 @@ object HelloWorld {
       battle station. Powerful enough to destroy an entire planet, its completion spells
       certain doom for the champions of freedom."""
 
-    val mapping = text.split(" ").map(w => (w,1))
+    val mapping = text.split(" ").map(w => (w, 1))
 
     mapping.take(5).foreach(println)
 
-    def merge(m1: Map[String, Int], m2: Map[String, Int]): Map[String, Int] = {
-      val keys = m1.keySet ++ m2.keySet
-      val res = keys.map { k => 
-        val v1 = m1.getOrElse(k, 0)
-        val v2 = m2.getOrElse(k, 0)
-
-        (k, v1+v2)
-      }.toMap
-      res
-    }
-
     val m1 = Map(("a" -> 1), ("b" -> 1))
-    val m2 = Map(("a"-> 1), ("c" -> 2))
-    println(merge(m1, m2))// Map(a -> 2, b -> 1, c -> 2))
+    val m2 = Map(("a" -> 1), ("c" -> 2))
+    println(Func.merge(m1, m2)) // Map(a -> 2, b -> 1, c -> 2))
+  }
+}
+
+private object Func {
+  def merge(m1: Map[String, Int], m2: Map[String, Int]): Map[String, Int] = {
+    val keys = m1.keySet ++ m2.keySet
+    val res = keys.map { k =>
+      val v1 = m1.getOrElse(k, 0)
+      val v2 = m2.getOrElse(k, 0)
+
+      (k, v1 + v2)
+    }.toMap
+    res
   }
 }
