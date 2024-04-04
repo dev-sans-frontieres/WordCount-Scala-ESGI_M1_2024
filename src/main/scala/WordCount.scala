@@ -13,9 +13,9 @@ object HelloWorld {
       battle station. Powerful enough to destroy an entire planet, its completion spells
       certain doom for the champions of freedom."""
 
-    val mapping = text.split(" ").map(w => (w, 1))
+    val mappingResult = Func.mapping(text)
 
-    mapping.take(5).foreach(println)
+    mappingResult.take(5).foreach(println)
 
     val m1 = Map(("a" -> 1), ("b" -> 1))
     val m2 = Map(("a" -> 1), ("c" -> 2))
@@ -24,6 +24,15 @@ object HelloWorld {
 }
 
 private object Func {
+
+  def mapping(text: String): Array[(String, Int)] = {
+    text
+      .split(" ")
+      .map(_.toLowerCase)
+      .map(_.replaceAll("[^a-zA-Z0-9]", ""))
+      .map(w => (w, 1))
+  }
+
   def merge(m1: Map[String, Int], m2: Map[String, Int]): Map[String, Int] = {
     val keys = m1.keySet ++ m2.keySet
     val res = keys.map { k =>
@@ -34,4 +43,5 @@ private object Func {
     }.toMap
     res
   }
+
 }
