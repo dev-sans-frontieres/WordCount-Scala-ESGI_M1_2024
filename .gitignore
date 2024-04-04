@@ -1,0 +1,30 @@
+# Config Build
+.bsp/
+
+# config IntelliJ IDEA
+.idea/
+
+# save IntelliJ IDEA
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# target Scala
+target/
+
+# dependanceies MVN
+lib_managed/
+project/boot/
+
+# save SBT
+.sbt/boot/
+
+# logs SBT
+logs/
+
+# histo SBT
+.history/
+
+# Vim
+.*.swp
